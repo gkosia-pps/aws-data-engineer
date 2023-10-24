@@ -1,0 +1,9 @@
+EBS Volumes: elastic block store
+
+    Can attached to ec2 while running
+    Its a network driver (not physical drive)
+    Used to persist data after termination
+    Can be attached to one instance at a time and must be in the same az
+    Have to provisions IOs and size 
+
+    Can be configured to be deleted when the ec2 is terminated

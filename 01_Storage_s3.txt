@@ -1,0 +1,104 @@
+s3: infinetly scaling storage
+
+Backup and storage
+Disaster recovery
+Archive
+Host media and apps
+Data Lake
+Static websides
+
+
+s3 Buckets: folders contains objects
+    global unique name
+    A bucket created in a region
+    Bucket name: non uppercase and non underscore
+    Buckets live wihin a region
+
+    s3 objects: key = prefix + filename, value of object is the body of the content
+    Each object has a key: full path of file s3://my-bucket/path/to/file.txt ==> my-bucket/path/to prefix, file.txt filename
+
+    Security:
+        Bucket by default will be private
+        Block public access setting on bucket or account level (for all buckets)
+        Object URL is the public url of the object 
+
+        User-based: 
+            IAM Policies: which api calls will be allowed from a specific IAM user
+        Resource-based: 
+            Bucket policies: bucket rules to allo specific users, json grant actions to resources
+            Object ACL (Access controle list): 
+            Bucket ACL (Access controle list): 
+
+    Versioning: setting in bucket level
+                new version on every key
+
+    Replication: must have versioning enabled, copy is asynchromous
+        CRR: cross region replication
+        SRR: same region replication 
+
+        Replicate only new objects
+        To replicate existing must use S3 Batch Replication
+
+
+    Storage classes: Availability SLAs 
+
+        General purpose:       big data analytics
+        Standar Infrequent:    disaster recovery, backups
+        One zone-infrequent    data lost when az is destroyed, secondary backups, data that can be recreated
+        Glacier Instant        archived/backup milisecond retrival
+        Glacier Flexible       1-5 minute retrival expedited, 3-5 hours standar, 5-12 hours Bulk
+        Glacier Deep Archive   ..
+        Intelligent Tiering    Move objects automatically based on usage patterns
+                               Frequent
+                               Infrequent
+                               Archived
+                               Depp archived
+
+        Lifecyvle rules: move objects between storage classes based on rules
+
+    Event notifications: object created, removed, restored, replication
+                         trigger processes when object life event occur
+                         Add message to SNS topic, SQS, trigger a lambda function or post event to event bridge
+                         
+                         To configure n event notification:
+                            SNS,SQS, Lambda: create resource access policy to allow s3 post to topic
+                        
+                          
+                          The other option is to link the events with an event bridge notification 
+                          From Event bridge we can distribute to other services the events
+
+    Performance:
+
+        Multipart-upload: put object
+                            I have a large file
+                            I divide it to smaller and upload it in parralell
+        
+        s3 Transfer Accelleration: get/put object
+            Transfer file to an AWS edge location which will forward the data to the target region
+            The edge will transfer it throught the private fast aws network
+
+        Byte range fetches: get object
+
+            I have a big file to download
+            Requesting the first part, then the other...
+
+
+
+    s3 Select and Glacier select: 
+        use sql to filter the data as sitting on s3
+        Less network traffic
+
+
+    Access points:
+
+        Its a policy that allows to grant r/w access to s3 prefixes
+        Then we grant to users permissions to use access point 
+        Each Access point has its own dns name
+        
+    s3 Object Lambda:
+
+        Is used when we want to process the object before provide it to the requestor
+        When someone request an object, a labda function is triggered to process the object before push it to the requestor
+        Remove PI/GDPR, convert data to json...
+        Return the data to other format on request
+        s3 --> s3 Access Point --> Redacting Lambda function --> s3 Object Lambda Access point --> requestor
