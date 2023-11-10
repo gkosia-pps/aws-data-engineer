@@ -1,0 +1,3 @@
+Used to sync large amount of data from/to aws filesystems
+Need to install a DataSync agent
+The replication tasks are on schedule hourly, daily, weekly

@@ -1,0 +1,9 @@
+Aws Backup:
+
+    Central fully manages backup service 
+    Support many services like ec2, s3, rds, efs
+    Support cross region and cross account backups
+    Support point in time restore, on-demand and schedule backups
+    Provide backup policies to manage lifecycle of backups
+
+    Create backups plans that run the backups and store them in s3

@@ -1,0 +1,15 @@
+Migrate a database from on-premises/cloudto AWS
+Source database remains available
+Support Homogeneous and Heterogeneous migrations (MSSQL to Aurora)
+Support of CDC
+
+Need to provision an ec2 instance that will host the dms task
+
+Schema Conversion tool: 
+    allows to convert the schema from source to target
+    if i need the SCT and want to migrate from on-premises i have to install the SCT in a vm onpremmis that will do the converion
+
+
+
+Endpoints: are the source/targets
+Migration tasks: are the tasks that migrate from source to target 

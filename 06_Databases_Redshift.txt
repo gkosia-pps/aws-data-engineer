@@ -1,0 +1,39 @@
+Redshift:
+    Fully managed, scalable MPP dwh
+
+Durability: 
+    Data are stored to original worker node, on a replica node and to s3
+
+Distribution style:
+    AUTO: redshift will choose based on data size
+          large size => EVEN, small size ALL
+
+    EVEN: round robin
+    KEY: hash based on column
+    ALL: replicate to all nodes
+
+Sort keys:
+    Physical stored order
+    Statistics kept for each block (min, max, ) that sed for block pruning
+
+    Types:
+        Single: single column
+        Compound: combination of columns
+        Interleaved: give same weight to all columns on sorting
+
+Copy command:
+
+    Support from s3, EMR, DynamoDB, remote hosts
+    Requires a manifest and IAM role
+    manifest is a file that contains in json all files to be loaded
+
+Unload command: export data to s3
+
+Auto-copy from s3
+zero-ETL from Aurora to Redshift
+Streaming ingestion from Kinesis data stream or MSK
+
+
+Spectrum:
+    Query unstructure data on top of s3
+    Can scale horizontally

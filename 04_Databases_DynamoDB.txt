@@ -1,0 +1,101 @@
+Dynamo DB: Nosql serverless database, Non relational distributed database
+
+    Nosql: 
+        Do not support or limited support of joins
+        Do not perform aggregations
+        All data about the entity its in one object
+        Does not support constraints
+
+    DynamoDB:
+        Fully managed, HA with replication to multiple AZ
+        No sql
+        Low cost and auto-scaling
+
+
+        Its a collection of tables
+        Each table has Primary-key
+        Rows of table is items
+        Each item has attributes
+        Each rows has limit of 400KB
+        Support scalar types, lists, maps, sets
+
+        Primary key:
+            Partition key(hash): unique for each row
+                                 data are distributed based on partition key
+
+            Partition key + Sort key (Hash + range): 
+                                
+                                Combination must be unique (user_id + movie_id)
+
+DynamoDB hands-on:
+    In the console we have the option to create tables because its a fully named service
+
+    Table class: 
+        Standar:    general purpose
+        Standar-IA: for tables that will be infrequent accessed to save cost
+
+    Capacity mode:
+
+        On-demand: based on usage
+        Provisioned: specify read/write capacity
+
+    Read/Write capacipy:
+        Enable/disable Autoscale
+        Set capacity units
+
+    From console i can create/modify/query the records of the table
+
+
+Capacity Modes:
+
+    Provisioned: (default)
+        Specify number of r/w CAPACITY UNITS(RCU/WCU) per second
+        Option to setup autoscaling
+        Pay for provisioned r/w capacity units
+
+        1kb is 1 WCU
+
+
+    On-demand:
+        r/w per second automatically scale up/down with workloads
+        Pay for usage (more expensive) 
+
+    I can switch between modes once every 24h
+
+
+Eventually consistent read vs Strongly consistent read:
+    Eventually consistent read(default): can read old data if the read comes imitiatly after write because change didnt replicated
+    Strongly consistent read: even if i read imitiatly after write i will read always the latest value
+
+    Strongly consume 2x RCUs
+
+
+Basic API:
+  Write:
+    PutItem: add new item or fully overwrite existing
+    UpdateItem: edit existing or add new attribute
+    Conditional Write: write/update/delete only if condition met, otherwise return error
+  Read:
+    GetItem: read based on PK
+
+  Query:
+    Based on KeyConditionExpression
+    Filter expression
+
+  Scan:
+    Scan the entire table and then filter
+  
+  Delete:
+    DeleteItem: delete individual item
+    BatchDelte
+    Drop table    
+
+
+Indexing:
+
+    Data of table are sorted using the SortKey
+    Can have up to 5 LSI (Local Secondary Index) per table 
+    LSI must be defined on table creation
+
+    GSI (global secondary index): alternate primary key (its like a copy of table with different primary key)
+                                can be created after table creation

@@ -7,3 +7,13 @@ EBS Volumes: elastic block store
     Have to provisions IOs and size 
 
     Can be configured to be deleted when the ec2 is terminated
+
+
+EFS: autoscale network file system
+     can be mounted to multiple ec2 which might located in different az
+     need a security group to control security
+     can be used only with linux ec2 images
+
+     Performance mode: 
+        General: webservers, content managment
+        Max IO: higher latency,throughput hight parrallel, (big data, media processign)

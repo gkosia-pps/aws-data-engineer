@@ -1,0 +1,10 @@
+RDS: relational databases
+
+    Aws Aurora: Support MySQL and PostgreSQL
+                Offer up to 15 read replicas
+                Continues back to s3
+    MySQL
+    PostgreSQL
+    MariaDB
+    Oracle
+    SQL Server
