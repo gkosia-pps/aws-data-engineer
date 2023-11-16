@@ -1,0 +1,35 @@
+Docker agent/deamon run on top of an ec2 instance
+On docker agent we can start multiple containers
+
+
+Iamges can be stored:
+    Dockerhub: public images
+    AWS ECR: private/public repository
+
+When launching a container in AWS ECS we are launching an ECS Task on an ECS Cluster
+
+Launch type:
+    ec2: launch the compute as ec2 insdtances that i have to provision and manage  
+         the ECS Cluster is build using the ec2 instances
+         each ec2 must run the ecs agent, agent will register the instace on the ecs cluster
+    Fargate: compute is serverless, it runs the ECS Tasks and assign the cpu/memory we specify in container
+             it will create an ec2 autoscale group that will store the configuration (auto scale instances)
+
+
+IAM Roles:
+
+    If we have the ec2 launch type:
+        We have to create an ec2 instance profile that will be used from ECS Agent
+
+    ECS Task role:  (app permissions)
+        for both launch types, 
+        each task will need its own role with custom permissions
+
+Load balancer:
+
+    If we want to expose the services to public(api, web app) we need to add an Application Load balances
+
+Data volumes:
+    To persist data on ECS we have to mount volumes that point to an EFS on each ECS tasks
+    Apps mount volumes that point on the same EFS
+    EFS: persistance, multi-az shared storage for containers

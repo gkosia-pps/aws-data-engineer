@@ -1,0 +1,7 @@
+Spot: very cheap, aws can claim back the resources at any time
+      apps will have to maintain checkpoints that will continue after the instnce is available
+Reserved: long running clusters, reserved for a period to clain discount(year)
+On demand: 
+
+Autoscaling groups
+ec2 behind EMR

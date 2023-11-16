@@ -1,0 +1,33 @@
+Network ACL: 
+    its firewall rules that control traffic from/to public subnets
+    Can allow or DENY rules (ips or ip ranges)
+
+Security groups:
+    its firewall rules that control traffic from/to an ENI (Elastic network instance) or ec2
+    Can have ALLOW rules on IPs or other Security groups
+
+
+VPC Flow Log: IP trafic from/to vpc/subnets
+
+Connecting VPCs:
+
+    VPC Peering: connect two VPCs privatly
+                 behaive as its the same network
+                 IP ranges must not overlapping
+        
+    VPC endpoint: connect to AWS private insteat of public internet
+                 private access from within a VPC to AWS Service
+                (more security, low latency)
+
+Connect on-prem and AWS:
+
+    Site to Site:   encrypted connection over the public internet
+    Direct connect: physical private secure fast connection
+
+
+AWS Private Link: 
+    Used to expose a service privatly to other VPCs
+    From service side require a Network Balancer, from consumer require an Elastic Network Interface
+    AWS Private Link will connect Elastic Network Interface to Network Balancer
+
+

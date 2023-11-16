@@ -1,0 +1,26 @@
+Manage cubernetes service: automatic deployment, scaling and managment of containers
+                           its opensource and cloud agnostic                
+Launge modes:
+    ec2
+    Fargate
+
+Architecture:
+
+    EKS span to 3 AZs
+    Each AZ has its own public and private subnet
+    Pods are scheduled to EKS worker nodes
+    
+
+Nodes types:
+
+    Managed node groups: ec2 instances that are part fo auto scaling group(ASG) and managed by EKS
+                         Support on-demand and spot instaces
+    Self managed nodes:
+        Nodes created manually and registered to the cluster and managed by ASG 
+
+    AWS Fargete: no nodes, no maintenance
+
+Data volumes:
+
+    Need to specify Storage class manifest on EKS Cluster
+    Support for EBS, EFS

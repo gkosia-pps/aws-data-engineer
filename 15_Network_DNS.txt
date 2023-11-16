@@ -1,0 +1,32 @@
+DNS: Domain name system, transflate url to IP
+     
+     Hierarchical naming structure:
+                                        .com
+                                 example.com
+                             www.example.com
+                             api.example.com
+
+    Domain registrar: Amazon Route 53, GoDaddy..
+    DNS RTecords: 
+    Zone File: contains all DNS records
+    Name server: resolves DNS queries
+    Top level Domains: .com, .us, .in, .gov
+    Second level domains: amazon.com, google.com
+
+
+    http://api.www.example.com
+
+    .com                        : TLD
+    example.com                 : SLD
+    www.example.com             : subdomain
+    http                        : protocol
+    api.www.example.com         : fully qualified domain
+    http://api.www.example.com  : url
+
+
+    We have the public IP
+    To find it with www.exaple.com we have to register the IP to a SLD DNS Server that is managed from Domain Registrar
+
+    Root DNS Server  (managed by ICANN) knows .com TLD DNS server
+        TLD DNS Server (managed by IANA ) knows example.com SLD DNS Server    
+            SLD DNS Server (managed by Domain registrar) knows the IP of the domain

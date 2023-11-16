@@ -1,0 +1,28 @@
+VPC: virtual private cloud
+     its a regional resource (can containes resources from multi-az)
+
+     A VPC has CIDR Range: IPS available in the VPC (10.0.0.0/16)
+
+     By default in AWS we have one VPC for each region
+     Each VPC has a public subnet
+
+Subnets: allows to partition the VPC
+         its az resource: resources belong to same az
+         A subnet can be public or private
+
+Rout tables: 
+    each VPC has route tables that defines how the traffic flows between the subnets
+
+
+Inbternet Gateway:
+
+    Its the door of VPC to connect to the internet
+    The public subnets of the VPC will have a route to the public gateway
+
+NAT Gateways:
+
+    It is used from resources in Private subnets to access the internet but not be reached throught the internet
+    1. We provision a NAT Gateway in the public subnet
+    2.  -> Private resource in private subnet speak to NAT Gateway in public subnet
+        -> NAT Gateway speak to Internet gateway
+        -> Internet Gateway speak to Internet
