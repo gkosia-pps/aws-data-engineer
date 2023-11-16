@@ -30,3 +30,5 @@ DNS: Domain name system, transflate url to IP
     Root DNS Server  (managed by ICANN) knows .com TLD DNS server
         TLD DNS Server (managed by IANA ) knows example.com SLD DNS Server    
             SLD DNS Server (managed by Domain registrar) knows the IP of the domain
+                Local DNS Server (managd by Organization or ISP)
+                    Web browser
